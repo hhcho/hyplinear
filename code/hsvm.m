@@ -94,15 +94,40 @@ function [w, a, b] = hsvm(y, X, cvec, debug)
     % there is not much we can do
     if isfeasible(w) 
 
+      initw = w;
+      initobj = objfn(w, L2, y2, c);
+
+      bestw = w;
+      bestobj = initobj;
+
+      if debug
+        fprintf('%03d: %f\n', 0, initobj);
+      end
+
+      step_size = learn_rate;
+      retry_left = 10;
+
       % Gradient descent
-      for iter = 1:niter
-          obj = objfn(w, L2, y2, c);
+      iter = 0;
+      while iter < niter
+          iter = iter + 1;
+
           grad = gradfn(w, L2, y2, c);
-          step_size = learn_rate;
           w_new = w - step_size * grad;
 
-          if debug && rem(iter, 50) == 0 
-            fprintf('%03d: %f\n', iter, obj);
+          if iter == 100 && retry_left > 0
+            if obj > initobj % Appears to be diverging
+              % Reset to initial w and reduce the learning rate
+              w = initw;
+              iter = 0;
+              step_size = step_size / 10;
+              retry_left = retry_left - 1;
+              continue
+            end
+          end
+
+          if debug && rem(iter, 100) == 0 
+            fprintf('%03d: %f, best %f, lrate %f\n', iter, obj, bestobj, step_size);
           end
           
           % If we walk out of feasible region,
@@ -131,12 +156,20 @@ function [w, a, b] = hsvm(y, X, cvec, debug)
           end
 
           w = w_new;
+
+          obj = objfn(w, L2, y2, c);
+          if obj < bestobj
+            bestw = w;
+            bestobj = obj;
+          end
       end
 
       if debug
         pause
       end
+
+      % Return the best parameters observed 
+      w = bestw;
     end
-    
   end
 end
