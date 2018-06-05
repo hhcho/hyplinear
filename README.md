@@ -18,9 +18,12 @@ addpath /PATH/TO/LIBLINEAR/matlab % modify
 ```
 to include the correct path to the MATLAB subdirectory of LIBLINEAR.
 
+##### Contact
+Hoon Cho, hhcho@mit.edu
+
+##### References
+
 \[1\] G. Alanis-Lobato, P. Mier, and M.A. Andrade-Navarro. Efficient Embedding of Complex Networks to Hyperbolic Space via their Laplacian. Scientific reports, 6:30108, 2016.
 
 \[2\] B.P. Chamberlain, J. Clough, and M.P. Deisenroth. Neural Embeddings of Graphs in Hyperbolic Space. arXiv preprint, arXiv:1705.10359, 2017.
 
-##### Contact
-Hoon Cho, hhcho@mit.edu
