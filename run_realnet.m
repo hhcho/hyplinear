@@ -1,5 +1,5 @@
-addpath code
 addpath /PATH/TO/LIBLINEAR/matlab % modify
+addpath code
 
 nets = {'karate', 'polbooks', 'football', 'polblogs'};
 

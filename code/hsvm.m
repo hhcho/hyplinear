@@ -1,6 +1,20 @@
-% X is a n-by-d matrix containing the coordinates of 
-% n data points in the Poincare ball model with d dimensions
-% y is a length-n vector containing binary class labels (0 or 1)
+% Input:
+% X: a n-by-d matrix containing the coordinates of 
+%    n data points in the Poincare ball model (unit radius)
+%    with d dimensions
+% y: a length-n vector containing binary class labels
+%    (0 or 1)
+% cvec: a vector of candidate values for misclassification
+%       penalty C. Determined via cross-validation.
+% 
+% Output:
+% w: a length-(d+1) vector parameterizing the decision
+%    function. The decision value v for a point x in the
+%    Poincare ball model is given by:
+%      v = minkowski_innerprod(ball2loid(x), w)
+% a,b: Platt scaling parameters fitted via cross-validation
+%      If probability estimates are desired,
+%
 function [w, a, b] = hsvm(y, X, cvec, debug)
   [n, d] = size(X);
   assert(length(y) == n);

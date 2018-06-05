@@ -1,5 +1,5 @@
-addpath code
 addpath /PATH/TO/LIBLINEAR/matlab % modify
+addpath code
 
 for eid = 1:100 % Dataset ID
 

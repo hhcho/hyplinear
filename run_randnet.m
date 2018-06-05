@@ -1,6 +1,6 @@
 function run_randnet
-  addpath code
   addpath /PATH/TO/LIBLINEAR/matlab % modify
+  addpath code
   
   nclass = 10;
   range_list = {[20 50], [50 100], [100 200]};
