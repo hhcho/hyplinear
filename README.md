@@ -1,6 +1,6 @@
 # hyplinear
 
-This repository contains a MATLAB implementation of linear support vector machines (SVM) for data points thatin hyperbolic space. The manuscript describing this method is currently under review. Preprint is available here: [https://arxiv.org/abs/1806.00437](https://arxiv.org/abs/1806.00437).
+This repository contains a MATLAB implementation of linear support vector machines (SVM) for data points in hyperbolic space. The manuscript describing this method is currently under review. Preprint is available here: [https://arxiv.org/abs/1806.00437](https://arxiv.org/abs/1806.00437).
 
 ##### Dependencies
 - MATLAB (version R2017b)
